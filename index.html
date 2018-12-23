@@ -9,7 +9,7 @@ function validateForm() {
     var name = document.querySelector("#name").value;
     if (name == "") {
         document.getElementById('bosalan').innerHTML = 'Name must be filled out!';
-        document.getElementById('bosalan').style.color = "Red";
+        document.getElementById('bosalan').style.color = "Blue";
         check = false;
     }else{
         document.getElementById('bosalan').innerHTML = '&nbsp;'; //for non-breaking space we use &nbsp feature
@@ -20,7 +20,7 @@ function validateForm() {
     var re = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     if (re.test(email) == false) {
         document.getElementById('e_mail').innerHTML = 'Please enter an e-mail address!';
-        document.getElementById('e_mail').style.color = "Red";
+        document.getElementById('e_mail').style.color = "Blue";
         check = false;
     }else{
         document.getElementById('e_mail').innerHTML = '&nbsp;';
@@ -30,7 +30,7 @@ function validateForm() {
     var sayisal = document.querySelector("#sayisal").value;
     if (sayisal == "" || isNaN(sayisal)) {    // isNaN() function determines whether a value is an illegal number (Not-a-Number)
         document.getElementById('sayisal_kontrol').innerHTML = 'Please enter a numerical value!';
-        document.getElementById('sayisal_kontrol').style.color = "Red";
+        document.getElementById('sayisal_kontrol').style.color = "Blue";
         check = false;
     }else{
         document.getElementById('sayisal_kontrol').innerHTML = '&nbsp;';
@@ -40,12 +40,12 @@ function validateForm() {
     var basamakli = document.querySelector("#basamakli").value;
     if (basamakli == "" || isNaN(basamakli)) {
         document.getElementById('onikibasamak').innerHTML = 'Please enter a numerical value!';
-        document.getElementById('onikibasamak').style.color = "Red";
+        document.getElementById('onikibasamak').style.color = "Blue";
         check = false;
     }else{
         if(basamakli.length != 12){
             document.getElementById('onikibasamak').innerHTML = 'Please enter a twelve digit numeric value!';
-            document.getElementById('onikibasamak').style.color = "Red";
+            document.getElementById('onikibasamak').style.color = "Blue";
             check = false;
         }else
             document.getElementById('onikibasamak').innerHTML = '&nbsp;';
@@ -62,43 +62,43 @@ function validateForm() {
     }
     if(degerSayac > 0 || harf==""){
         document.getElementById('harf_').innerHTML = 'Please enter only letters!';
-        document.getElementById('harf_').style.color = "Red";
+        document.getElementById('harf_').style.color = "Blue";
         check = false;
     }else{
         document.getElementById('harf_').innerHTML = '&nbsp;';
     }
 
     //Sadece harf ve maximum 30 karakter olmalı
-    var maxChar = document.querySelector("#maxChar").value;
+    var max30 = document.querySelector("#max30").value;
     var index=0;
-    for(var i=0; i<maxChar.length ; i++){
-        if((maxChar.charCodeAt(i)>=65 && maxChar.charCodeAt(i)<=90) || (maxChar.charCodeAt(i)>=97 && maxChar.charCodeAt(i)<=122)){
+    for(var i=0; i<max30.length ; i++){
+        if((max30.charCodeAt(i)>=65 && max30.charCodeAt(i)<=90) || (max30.charCodeAt(i)>=97 && max30.charCodeAt(i)<=122)){
         }else{
             index++;
         }
     }
-    if(index > 0 || maxChar==""){
-        document.getElementById('lblMaxChar').innerHTML = 'Please enter only letters!!!';
-        document.getElementById('lblMaxChar').style.color = "Red";
+    if(index > 0 || max30==""){
+        document.getElementById('max30Label').innerHTML = 'Please enter only letters!!!';
+        document.getElementById('max30Label').style.color = "Blue";
         check = false;
     }else{
-        if(maxChar.length >30){
-            document.getElementById('lblMaxChar').innerHTML = 'Maximum 30 karakter girin!!!';
-            document.getElementById('lblMaxChar').style.color = "Red";
+        if(max30.length >30){
+            document.getElementById('max30Label').innerHTML = 'Maximum 30 karakter girişi olabilir,lütfen tekrar deneyin!!!';
+            document.getElementById('max30Label').style.color = "Blue";
             check = false;
         }else
-            document.getElementById('lblMaxChar').innerHTML = '&nbsp;';
+            document.getElementById('max30Label').innerHTML = '&nbsp;';
     }
 
     //3 kelimelik string
-    var threeWords = document.querySelector("#threeWords").value;
-    var array = threeWords.split(" ");
+    var uckelime = document.querySelector("#uckelime").value;
+    var array = uckelime.split(" ");
     if(array.length != 3){
-        document.getElementById('lblThreeWords').innerHTML = 'Only 3 words,please!!!';
-        document.getElementById('lblThreeWords').style.color = "Red";
+        document.getElementById('ThreeWords').innerHTML = 'Only 3 words,please!!!';
+        document.getElementById('ThreeWords').style.color = "Blue";
         check = false;
     }else{
-        document.getElementById('lblThreeWords').innerHTML = '&nbsp;';
+        document.getElementById('ThreeWords').innerHTML = '&nbsp;';
     }
 
     //Complex Controls
@@ -118,10 +118,10 @@ function validateForm() {
         }
     }
     if(buyukHarfKontrolIndex>0 && kucukHarfKontrolIndex>0 && rakamKontrolIndex>0 && noktalamaKontrolIndex>0 && password.length >= 8){
-        document.getElementById('lblPassword').innerHTML = '&nbsp;';
+        document.getElementById('psswrd').innerHTML = '&nbsp;';
     }else{
-        document.getElementById('lblPassword').innerHTML = 'Enter the password by rules!!!';
-        document.getElementById('lblPassword').style.color = "Red";
+        document.getElementById('psswrd').innerHTML = 'Enter the password by rules!!!';
+        document.getElementById('psswrd').style.color = "Blue";
         check = false;
     }
 
@@ -134,7 +134,7 @@ function validateForm() {
 </head>
 <body>
 
-<form name="Form" action="/action_page.php" onsubmit="return validateForm()" method="post">
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
   Aşağıdaki alanlar boş bırakılmamalıdır: <br>
 
 
@@ -165,19 +165,19 @@ function validateForm() {
     <td width="200px"><label id="harf_">&nbsp;</label></td>
   </tr>
   <tr>
-    <td>Sadece harf ve en fazla 30 karakter uzunlugundaki string: </td>
-    <td><input type="text" id="maxChar"></td>
-    <td width="200px"><label id="lblMaxChar">&nbsp;</label></td>
+    <td>Sadece harf ve en fazla 30 uzunlugukta olan string: </td>
+    <td><input type="text" id="max30"></td>
+    <td width="200px"><label id="max30Label">&nbsp;</label></td>
   </tr>
   <tr>
     <td>3 kelimeden oluşan string: </td>
-    <td><input type="text" id="threeWords"></td>
-    <td width="200px"><label id="lblThreeWords">&nbsp;</label></td>
+    <td><input type="text" id="uckelime"></td>
+    <td width="200px"><label id="ThreeWords">&nbsp;</label></td>
   </tr>
   <tr>
-    <td>En az 1 büyük harf, 1 küçük harf, bir rakam ve  1 noktalama işareti bulunduracak ve en az 8 karakter uzunluğunda olacak olan metin: </td>
+    <td>En az 1 büyük harf, en az 1 küçük harf,en az bir rakam ve en az 1 noktalama işareti bulunduracak ve en az 8 uzunluğunda olan metin: </td>
     <td><input type="text" id="password"></td>
-    <td width="200px"><label id="lblPassword">&nbsp;</label></td>
+    <td width="200px"><label id="psswrd">&nbsp;</label></td>
   </tr>
 
 
